@@ -2,14 +2,14 @@
  * Centralized ARK service definitions used by both install and status commands
  */
 
-import {loadConfig, getMarketplaceRegistry} from './lib/config.js';
+import { loadConfig, getMarketplaceRegistry } from './lib/config.js';
 import type {
   ArkService,
   ServiceCollection,
   ArkDependency,
   DependencyCollection,
 } from './types/arkService.js';
-import {createRequire} from 'module';
+import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
 const packageJson = require('../package.json');
@@ -22,7 +22,6 @@ export type {
 };
 
 const REGISTRY_BASE = 'oci://ghcr.io/mckinsey/agents-at-scale-ark/charts';
-const CHART_VERSION = `${packageJson.version as string}`;
 
 /**
  * Dependencies that should be installed before ARK services
@@ -190,7 +189,7 @@ const defaultArkServices: ServiceCollection = {
     category: 'service',
     chartPath: `${REGISTRY_BASE}/ark-broker`,
     installArgs: [],
-    prerequisiteUninstalls: [{releaseName: 'ark-cluster-memory'}],
+    prerequisiteUninstalls: [{ releaseName: 'ark-cluster-memory' }],
     k8sDeploymentName: 'ark-broker',
     k8sDevDeploymentName: 'ark-broker-devspace',
   },
@@ -246,7 +245,7 @@ function applyConfigOverrides(defaults: ServiceCollection): ServiceCollection {
     const override = overrides[key];
     result[key] =
       override && typeof override === 'object'
-        ? {...service, ...override}
+        ? { ...service, ...override }
         : service;
   }
 
