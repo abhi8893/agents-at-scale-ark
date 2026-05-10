@@ -417,7 +417,7 @@ metadata:
 spec:
   input: "I need help with my order #12345"
   target:
-    - kind: Agent
+    kind: Agent
     name: customer-support
 ```
 
@@ -774,9 +774,9 @@ spec:
                 name: test-agent-query
               spec:
                 input: "Test agent functionality"
-                targets:
-                  - kind: Agent
-                    name: customer-support
+                target:
+                  kind: Agent
+                  name: customer-support
         - assert:
             resource:
               apiVersion: ark.mckinsey.com/v1alpha1
@@ -799,9 +799,9 @@ spec:
                 name: test-team-query
               spec:
                 input: "Test team collaboration"
-                targets:
-                  - kind: Team
-                    name: support-team
+                target:
+                  kind: Team
+                  name: support-team
         - assert:
             resource:
               apiVersion: ark.mckinsey.com/v1alpha1
