@@ -50,26 +50,22 @@ Use the ARK CLI to bootstrap a new project with a structured directory layout:
 ```bash
 # Create a new project
 ark generate project my-agents
-
-# Navigate to the project directory
-cd my-agents
 ```
 
-Now you can find a defalut model configuration in the `models/` directory. Alternatively, you can copy a model configuration template from the `samples/models/` directory of the ARK repository.
+You can finalize your initial setup through one of the following ways:
 
-Then, edit the `.env` file to add your API keys and other model related variables and make sure to source it.
 
-You can finalize you initial setup through one of the following ways:
+### Option 1: Non-Interactive Mode
+
+To skip prompts and use defaults:
 
 ```bash
-# Just apply model config with environment variable substitution
-make models-apply
+ark generate project my-agents -d . --no-interactive --skip-models --skip-git
+```
 
-# Apply model configurations and also deploy to ARK
-make quickstart
+### Option 2: Interactive (Recommended for getting started)
 
-### Interactive Prompts
-
+```bash
 The generator will ask you several questions to customize your project:
 
 **1. Project Type:**
@@ -90,13 +86,6 @@ The generator will ask you several questions to customize your project:
 - Initialize git repository
 - Create initial commit
 - Configure git user name and email
-
-### Non-Interactive Mode
-
-To skip prompts and use defaults:
-
-```bash
-ark generate project my-agents --no-interactive --skip-models --skip-git
 ```
 
 This creates a project structure with:
@@ -119,6 +108,10 @@ my-agents/
 ├── .env             # Environment configuration
 └── README.md        # Project README
 ```
+
+
+Now you can find a default model configuration in the `models/` directory. Alternatively, you can copy a model configuration template from the `samples/models/` directory of the ARK repository.
+Then, edit the `.env` file to add your API keys and other model related variables and make sure to source it.
 
 ## Deploying Your Project to ARK
 
